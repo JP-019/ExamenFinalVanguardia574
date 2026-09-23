@@ -58,37 +58,4 @@ public class BoletosController : ControllerBase
 
         return CreatedAtAction(nameof(GetBoleto), new { id = boleto.Id }, boleto);
     }
-
-    [HttpPut("{id}")]
-    public async Task<IActionResult> PutBoleto(int id, Boleto boleto)
-    {
-        if (id != boleto.Id)
-            return BadRequest();
-
-        var existente = await _context.Boletos.FindAsync(id);
-        if (existente == null)
-            return NotFound();
-
-        boleto.NombreComprador = TextNormalizer.Normalizar(boleto.NombreComprador);
-
-        if (!ModelState.IsValid)
-            return BadRequest(ModelState);
-
-        _context.Entry(existente).CurrentValues.SetValues(boleto);
-        await _context.SaveChangesAsync();
-
-        return NoContent();
-    }
-    [HttpDelete("{id}")]
-    public async Task<IActionResult> DeleteBoleto(int id)
-    {
-        var boleto = await _context.Boletos.FindAsync(id);
-        if (boleto == null)
-            return NotFound();
-
-        _context.Boletos.Remove(boleto);
-        await _context.SaveChangesAsync();
-
-        return NoContent();
-    }
 }

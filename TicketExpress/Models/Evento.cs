@@ -12,7 +12,7 @@ public class Evento
 
     [Required(ErrorMessage = "La ciudad es obligatoria.")]
     [StringLength(60, MinimumLength = 2, ErrorMessage = "La ciudad debe tener entre 2 y 60 caracteres.")]
-    [RegularExpression(@"^[a-zA-Z\s'-]+$", ErrorMessage = "La ciudad solo puede contener letras, espacios, guiones o apóstrofes.")]
+    [RegularExpression(@"^[\p{L}\s'-]+$", ErrorMessage = "La ciudad solo puede contener letras, espacios, guiones o apóstrofes.")]
     public string Ciudad { get; set; } = "";
 
     [Required(ErrorMessage = "La fecha es obligatoria.")]

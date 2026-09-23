@@ -11,7 +11,7 @@ public class Boleto
 
     [Required(ErrorMessage = "El nombre del comprador es obligatorio.")]
     [StringLength(100, MinimumLength = 2, ErrorMessage = "El nombre del comprador debe tener entre 2 y 100 caracteres.")]
-    [RegularExpression(@"^[a-zA-Z\s'-]+$", ErrorMessage = "El nombre del comprador solo puede contener letras, espacios, guiones o apóstrofes.")]
+    [RegularExpression(@"^[\p{L}\s'-]+$", ErrorMessage = "El nombre del comprador solo puede contener letras, espacios, guiones o apóstrofes.")]
     public string NombreComprador { get; set; } = "";
 
     [Required(ErrorMessage = "El correo del comprador es obligatorio.")]
